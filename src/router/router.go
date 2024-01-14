@@ -21,7 +21,7 @@ func (r *Router) RegisterRouters(engine *gin.Engine) {
 	engine.UseRawPath = true
 
 	// init route
-	routerGroup := engine.Group("/api/v1")
+	routerGroup := engine.Group("builder/api/v1")
 
 	builderRouter := routerGroup.Group("/teams/:teamID/builder")
 	appRouter := routerGroup.Group("/teams/:teamID/apps")

@@ -2,12 +2,12 @@ package main
 
 import (
 	"encoding/json"
+	gws "github.com/gorilla/websocket"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/gorilla/mux"
-	gws "github.com/gorilla/websocket"
 	"github.com/illacloud/builder-backend/src/driver/postgres"
 	"github.com/illacloud/builder-backend/src/storage"
 	"github.com/illacloud/builder-backend/src/utils/accesscontrol"
@@ -161,7 +161,7 @@ func main() {
 	})
 
 	// handle ws://{ip:port}/teams/{teamID}/room/websocketConnection/dashboard
-	r.HandleFunc("/teams/{teamID}/room/websocketConnection/dashboard", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("builder-ws/teams/{teamID}/room/websocketConnection/dashboard", func(w http.ResponseWriter, r *http.Request) {
 		teamID := mux.Vars(r)["teamID"]
 		teamIDInt := idconvertor.ConvertStringToInt(teamID)
 		log.Printf("[Connected] /teams/%d/dashboard", teamIDInt)
@@ -169,7 +169,7 @@ func main() {
 	})
 
 	// handle ws://{ip:port}/teams/{teamID}/room/websocketConnection/apps/{appID}
-	r.HandleFunc("/teams/{teamID}/room/websocketConnection/apps/{appID}", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("builder-ws/teams/{teamID}/room/websocketConnection/apps/{appID}", func(w http.ResponseWriter, r *http.Request) {
 		teamID := mux.Vars(r)["teamID"]
 		appID := mux.Vars(r)["appID"]
 		teamIDInt := idconvertor.ConvertStringToInt(teamID)
@@ -179,7 +179,7 @@ func main() {
 	})
 
 	// handle ws://{ip:port}/teams/{teamID}/room/binaryWebsocketConnection/apps/{appID}
-	r.HandleFunc("/teams/{teamID}/room/binaryWebsocketConnection/apps/{appID}", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("builder-ws/teams/{teamID}/room/binaryWebsocketConnection/apps/{appID}", func(w http.ResponseWriter, r *http.Request) {
 		teamID := mux.Vars(r)["teamID"]
 		appID := mux.Vars(r)["appID"]
 		teamIDInt := idconvertor.ConvertStringToInt(teamID)

@@ -68,7 +68,7 @@ type Config struct {
 	// cache config
 	RedisAddr     string `env:"ILLA_REDIS_ADDR" envDefault:"localhost"`
 	RedisPort     string `env:"ILLA_REDIS_PORT" envDefault:"6379"`
-	RedisPassword string `env:"ILLA_REDIS_PASSWORD" envDefault:"illa2022"`
+	RedisPassword string `env:"ILLA_REDIS_PASSWORD" envDefault:"123456"`
 	RedisDatabase int    `env:"ILLA_REDIS_DATABASE" envDefault:"0"`
 	// drive config
 	DriveType             string `env:"ILLA_DRIVE_TYPE" envDefault:""`
@@ -81,7 +81,7 @@ type Config struct {
 	DriveUploadTimeoutRaw string `env:"ILLA_DRIVE_UPLOAD_TIMEOUT" envDefault:"30s"`
 	DriveUploadTimeout    time.Duration
 	// supervisor API
-	IllaSupervisorInternalRestAPI string `env:"ILLA_SUPERVISOR_INTERNAL_API" envDefault:"http://127.0.0.1:9001/api/v1"`
+	IllaSupervisorInternalRestAPI string `env:"ILLA_SUPERVISOR_INTERNAL_API" envDefault:"http://127.0.0.1:9011/api/v1"`
 
 	// peripheral API
 	IllaPeripheralAPI string `env:"ILLA_PERIPHERAL_API" envDefault:"https://peripheral-api.illasoft.com/v1/"`
